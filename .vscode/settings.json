@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "[solidity]": {
+        "editor.defaultFormatter": "JuanBlanco.solidity"
+    },
+    "solidity.formatter": "forge",
+    "editor.foldingImportsByDefault": true,
+    "solidity.compileUsingRemoteVersion": "v0.8.28+commit.7893614a",
+    "solidity.defaultCompiler": "remote"
+}
