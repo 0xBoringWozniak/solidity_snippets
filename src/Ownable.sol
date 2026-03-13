@@ -8,8 +8,12 @@ contract Ownable {
         owner = msg.sender;
     }
 
-    modifier onlyOwner() {
+    function _onlyOwner() internal view {
         require(msg.sender == owner, "Ownable: caller is not the owner");
+    }
+
+    modifier onlyOwner() {
+        _onlyOwner();
         _;
     }
 
