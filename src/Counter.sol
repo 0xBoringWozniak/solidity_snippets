@@ -1,26 +1,24 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.20;
 
-contract Counter {
-    uint256 public count;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-    constructor(uint256 _count) {
-        count = _count;
+contract Counter is Ownable {
+    uint256 private number;
+
+    constructor(uint256 _number) Ownable(msg.sender) {
+        number = _number;
     }
 
-    // Function to get the current count
-    function get() public view returns (uint256) {
-        return count;
+    function getNumber() public view returns (uint256) {
+        return number;
     }
 
-    // Function to increment count by 1
-    function inc() public {
-        count += 1;
+    function increment() public {
+        number++;
     }
 
-    // Function to decrement count by 1
-    function dec() public {
-        // This function will fail if count = 0
-        count -= 1;
+    function decrement() public onlyOwner {
+        number--;
     }
 }
