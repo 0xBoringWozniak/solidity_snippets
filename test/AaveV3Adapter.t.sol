@@ -22,13 +22,6 @@ contract AaveV3AdapterTest is Test {
     function test_Supply_USDC_And_Check_Reserve_Update() public {
         (address aTokenBefore, uint128 liquidityIndexBefore, uint40 lastUpdateBefore) = adapter.getReserveInfo(USDC);
 
-        console2.log("aToken before:");
-        console2.log(aTokenBefore);
-        console2.log("liquidityIndex before:");
-        console2.logUint(uint256(liquidityIndexBefore));
-        console2.log("lastUpdateTimestamp before:");
-        console2.logUint(uint256(lastUpdateBefore));
-
         assertTrue(aTokenBefore != address(0), "aToken is zero");
 
         uint256 amount = 1_000e6; // 1000 USDC, 6 decimals
@@ -50,13 +43,6 @@ contract AaveV3AdapterTest is Test {
         uint256 userATokenAfter = IERC20(aTokenBefore).balanceOf(user);
 
         (address aTokenAfter, uint128 liquidityIndexAfter, uint40 lastUpdateAfter) = adapter.getReserveInfo(USDC);
-
-        console2.log("aToken after:");
-        console2.log(aTokenAfter);
-        console2.log("liquidityIndex after:");
-        console2.logUint(uint256(liquidityIndexAfter));
-        console2.log("lastUpdateTimestamp after:");
-        console2.logUint(uint256(lastUpdateAfter));
 
         console2.log("user USDC before:");
         console2.logUint(userUsdcBefore);
